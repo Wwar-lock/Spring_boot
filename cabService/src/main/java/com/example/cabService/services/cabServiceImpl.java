@@ -2,6 +2,7 @@ package com.example.cabService.services;
 
 import com.example.cabService.dao.cabDao;
 import com.example.cabService.entity.cab;
+import com.example.cabService.exception.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class cabServiceImpl implements cabService{
     }
 
     @Override
-    public cab getCab(int cabId) {
+    public cab getCab(int cabId){
 //        cab ansCab = null;
 //        for(int i=0;i<Cabs.size();i++){
 //            if(Cabs.get(i).getCabId() == cabId){
