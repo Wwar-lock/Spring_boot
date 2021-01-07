@@ -2,6 +2,7 @@ package com.example.cabService.services;
 
 import com.example.cabService.dao.driverdao;
 import com.example.cabService.entity.driver;
+import com.example.cabService.exception.DriverAlreadyAdded;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,10 +44,21 @@ public class driverImpl implements driverService{
     }
 
     @Override
-    public driver addDriver(driver dr) {
+    public driver addDriver(driver dr) throws DriverAlreadyAdded {
 //        Drivers.add(dr);
         drvdao.save((dr));
         return dr;
 
+    }
+
+    @Override
+    public boolean checkDriverId(int driverId) {
+        List<driver>Drivers = drvdao.findAll();
+        for(int i=0;i<Drivers.size();i++){
+            if(Drivers.get(i).getDriverId()==driverId){
+                return true;
+            }
+        }
+        return false;
     }
 }

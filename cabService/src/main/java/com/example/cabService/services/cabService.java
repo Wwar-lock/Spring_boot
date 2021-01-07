@@ -19,4 +19,6 @@ public interface cabService {
 
     public void deleteCab(int cabId);
 
+    boolean checkCabId(int cabId);
+
 }

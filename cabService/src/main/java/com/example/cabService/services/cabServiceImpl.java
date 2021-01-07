@@ -24,7 +24,7 @@ public class cabServiceImpl implements cabService{
     }
 
     @Override
-    public cab getCab(int cabId){
+    public cab getCab(int cabId) throws EntityNotFoundException{
 //        cab ansCab = null;
 //        for(int i=0;i<Cabs.size();i++){
 //            if(Cabs.get(i).getCabId() == cabId){
@@ -43,7 +43,7 @@ public class cabServiceImpl implements cabService{
     }
 
     @Override
-    public cab addCar(cab cb) {
+    public cab addCar(cab cb) throws EntityNotFoundException {
 //        Cabs.add(cb);
         cbD.save(cb);
         return cb;
@@ -74,5 +74,16 @@ public class cabServiceImpl implements cabService{
 //        }
         cab c = cbD.getOne(cabId);
         cbD.delete(c);
+    }
+
+    @Override
+    public boolean checkCabId(int cabId) {
+        List<cab>cabs = cbD.findAll();
+        for(int i=0;i<cabs.size();i++){
+            if(cabs.get(i).getCabId()==cabId) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.cabService.controller;
 
 import com.example.cabService.entity.cab;
+import com.example.cabService.exception.EntityNotFoundException;
 import com.example.cabService.services.cabService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,11 @@ public class cabController {
 //    }
 
     @GetMapping("/{cabId}")
-    public cab getCar(@PathVariable int cabId){
-        return cbService.getCab(cabId);
+    public cab getCar(@PathVariable int cabId) throws EntityNotFoundException {
+        if(cbService.checkCabId(cabId)){
+            return cbService.getCab(cabId);
+        }
+        return null;
     }
 
     @GetMapping("/all")
@@ -34,7 +38,10 @@ public class cabController {
     }
 
     @PostMapping("/add")
-    public cab createNewCab(@RequestBody cab cb){
+    public cab createNewCab(@RequestBody cab cb) throws EntityNotFoundException {
+        if(cbService.checkCabId(cb.getCabId())){
+            return null;
+        }
         return cbService.addCar(cb);
     }
 
@@ -45,8 +52,11 @@ public class cabController {
 
     @DeleteMapping("delete/{cabId}")
     public String deleteCab(@PathVariable int cabId){
-        cbService.deleteCab(cabId);
-        return "Deleted";
+        if(cbService.checkCabId(cabId)){
+            cbService.deleteCab(cabId);
+            return "Deleted";
+        }
+        return "ID doesn't Exists!!!";
     }
 
 }
