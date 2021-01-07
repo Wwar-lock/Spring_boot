@@ -1,0 +1,39 @@
+1. SEE ALL CABS
+    localhost:8080/v1/cabs/all
+
+
+2. ADD CABS
+    localhost:8080/v1/cabs/add
+
+    {
+        "cabId":1,
+        "cabRating":7,
+        "cabSeatCount":4,
+        "cabCondition":"good"
+    }
+
+3. UPDATE CAB
+    localhost:8080/v1/cabs/update
+
+    {
+        "cabId":2,
+        "cabRating":1,
+        "cabSeatCount":7,
+        "cabCondition":"bad"
+    }
+
+4.DELETE CAB
+    localhost:8080/v1/cabs/delete/1
+
+5. ADD DRIVER
+    localhost:8080/v1/drivers/add
+
+    {
+        "driverId":4,
+        "name":"ramesh",
+        "rating":8,
+        "exp":4,
+        "currentRideStatus":false
+    }
+
+6.

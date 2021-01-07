@@ -29,7 +29,7 @@ public class rideController {
         return rds.addRide(rd);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ride updateRide(@RequestBody ride rd){
         return rds.updateStatus(rd);
     }

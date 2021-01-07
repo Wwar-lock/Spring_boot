@@ -13,7 +13,7 @@ public class driver {
     private String name;
     private int rating ;
     private int exp;
-    private boolean currentRideStatus = false;
+    private boolean currentRideStatus;
 
     public void setCurrentRideStatus(boolean currentRideStatus) {
         this.currentRideStatus = currentRideStatus;
@@ -55,10 +55,5 @@ public class driver {
         return exp;
     }
 
-    public driver(int driverId, String name, int rating, int exp) {
-        this.driverId = driverId;
-        this.name = name;
-        this.rating = rating;
-        this.exp = exp;
-    }
+
 }
