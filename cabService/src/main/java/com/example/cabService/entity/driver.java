@@ -2,6 +2,7 @@ package com.example.cabService.entity;
 
 import com.example.cabService.status.driverStatus;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,6 +13,15 @@ public class driver {
     private String name;
     private int rating ;
     private int exp;
+    private boolean currentRideStatus = false;
+
+    public void setCurrentRideStatus(boolean currentRideStatus) {
+        this.currentRideStatus = currentRideStatus;
+    }
+
+    public boolean getCurrentRideStatus() {
+        return currentRideStatus;
+    }
 
     public void setDriverId(int driverId) {
         this.driverId = driverId;
