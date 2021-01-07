@@ -1,5 +1,6 @@
 package com.example.cabService.controller;
 
+import ch.qos.logback.core.encoder.EchoEncoder;
 import com.example.cabService.entity.ride;
 import com.example.cabService.services.rideStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class rideController {
 
     @PostMapping("/add")
     public ride addRride(@RequestBody ride rd){
+        if(rds.checkRideId(rd.getRideId())){
+            return null;
+        }
         return rds.addRide(rd);
     }
 
@@ -36,6 +40,9 @@ public class rideController {
 
     @DeleteMapping("delete/{rideId}")
     public String deleteRide(@PathVariable Integer rideId){
-        return rds.deleteRide(rideId);
+        if(rds.checkRideId(rideId)){
+            return rds.deleteRide(rideId);
+        }
+        return "ID doesn't exsits!!";
     }
 }

@@ -9,4 +9,5 @@ public interface rideStatus {
     public ride updateStatus(ride rd);
     public String deleteRide(Integer rideId);
     public List<ride> getgAllRides();
+    public boolean checkRideId(int rideId);
 }

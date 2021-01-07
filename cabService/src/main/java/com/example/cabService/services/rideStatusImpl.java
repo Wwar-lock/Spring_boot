@@ -22,7 +22,7 @@ public class rideStatusImpl implements rideStatus {
     public ride addRide(ride rd) {
         rdD.save(rd);
         driver tmp_dr = drvd.getOne(rd.getCabId());
-        tmp_dr.setCurrentRideStatus(!tmp_dr.getCurrentRideStatus());
+        tmp_dr.setCurrentRideStatus(true);
         drvd.save(tmp_dr);
         return rd;
     }
@@ -40,6 +40,9 @@ public class rideStatusImpl implements rideStatus {
 
     @Override
     public String deleteRide(Integer rideId) {
+        driver tmp_dr = drvd.getOne(rdD.getOne(rideId).getCabId());
+        tmp_dr.setCurrentRideStatus(false);
+        drvd.save(tmp_dr);
         rdD.delete(rdD.getOne(rideId));
         return "Deleted";
     }
@@ -47,5 +50,16 @@ public class rideStatusImpl implements rideStatus {
     @Override
     public List<ride> getgAllRides() {
         return rdD.findAll();
+    }
+
+    @Override
+    public boolean checkRideId(int rideId) {
+        List<ride>rides = rdD.findAll();
+        for(int i=0;i<rides.size();i++){
+            if(rides.get(i).getRideId()==rideId){
+                return true;
+            }
+        }
+        return false;
     }
 }

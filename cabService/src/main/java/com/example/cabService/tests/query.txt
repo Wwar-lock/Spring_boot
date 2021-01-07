@@ -36,4 +36,4 @@
         "currentRideStatus":false
     }
 
-6.
+6. ADD RIDE
