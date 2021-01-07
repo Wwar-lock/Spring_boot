@@ -20,6 +20,12 @@ public class rideStatusImpl implements rideStatus {
 
     @Override
     public ride addRide(ride rd) {
+        List<ride>rides = rdD.findAll();
+        for(int i=0;i<rides.size();i++){
+            if(rides.get(i).getCabId() == rd.getCabId()){
+                return null;
+            }
+        }
         rdD.save(rd);
         driver tmp_dr = drvd.getOne(rd.getCabId());
         tmp_dr.setCurrentRideStatus(true);
