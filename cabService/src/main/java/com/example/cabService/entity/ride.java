@@ -12,12 +12,6 @@ public class ride {
     private Integer cabId;
     private Boolean currentRideStatus;
 
-//    public ride(Integer rideId, Integer usrId, Integer cabId, Boolean currentRideStatus) {
-//        this.rideId = rideId;
-//        this.usrId = usrId;
-//        this.cabId = cabId;
-//        this.currentRideStatus = currentRideStatus;
-//    }
 
     public void setRideId(Integer rideId) {
         this.rideId = rideId;

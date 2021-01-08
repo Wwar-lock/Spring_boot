@@ -8,23 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
 public class cab {
     @Id
     private int cabId;
     private int cabRating;
     private int cabSeatCount;
     private String cabCondition;
-
-//    public cab(int cabId, int cabRating, int cabSeatCount, String cabCondition) {
-//        this.cabId = cabId;
-//        this.cabRating = cabRating;
-//        this.cabSeatCount = cabSeatCount;
-//        this.cabCondition = cabCondition;
-//    }
-
 
     public void setCabId(int cabId) {
         this.cabId = cabId;

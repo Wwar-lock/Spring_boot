@@ -9,36 +9,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/drivers")
+@RequestMapping(value = "/drivers")
 public class driverController {
+
     @Autowired
-    private driverService dService;
-
-//    @Autowired
-//    public driverController(driverService dService) {
-//        this.dService = dService;
-//    }
-
+    private driverService ds;
     @GetMapping("/")
-    public String home(){
-        return "Hi!! there";
+    String home(){
+        return "Hi Driver Repo";
     }
-
     @GetMapping("/all")
-    public List<driver>getAllDrivers(){
-        return dService.getAllDrivers();
+    List<driver>getAllDrivers(){
+        return ds.getAllDrivers();
     }
-
     @PostMapping("/add")
-    public driver addDriver(@RequestBody driver dr) throws DriverAlreadyAdded {
-        if(dService.checkDriverId(dr.getDriverId())){
-            return null;
-        }
-        return dService.addDriver(dr);
+    driver addDriver(@RequestBody driver dr){
+        return ds.addDriver(dr);
     }
-
     @PutMapping("/update")
-    public driver updateDriver(@RequestBody driver dr){
-        return dService.updateDriver(dr);
+    driver updateDriver(@RequestBody driver dr){
+        return ds.updateDriver(dr);
     }
 }

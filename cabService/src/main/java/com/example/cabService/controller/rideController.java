@@ -2,7 +2,7 @@ package com.example.cabService.controller;
 
 import ch.qos.logback.core.encoder.EchoEncoder;
 import com.example.cabService.entity.ride;
-import com.example.cabService.services.rideStatus;
+import com.example.cabService.services.rideService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,39 +10,30 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ride")
+@RequestMapping("/rides")
 public class rideController {
     @Autowired
-    private rideStatus rds;
+    private rideService rds;
 
     @GetMapping("/")
-    public String welcome(){
-        return "Hi! Ride";
-    }
-
-    @GetMapping("/all")
-    public List<ride>getAllRides(){
-        return rds.getgAllRides();
+    String home(){
+        return "Hi !! Rides here!";
     }
 
     @PostMapping("/add")
-    public ride addRride(@RequestBody ride rd){
-        if(rds.checkRideId(rd.getRideId())){
-            return null;
-        }
+    ride addRide(@RequestBody ride rd){
         return rds.addRide(rd);
     }
 
+    @GetMapping("/all")
+    List<ride>getAllRides(){
+        return rds.getgAllRides();
+    }
+
     @PutMapping("/update")
-    public ride updateRide(@RequestBody ride rd){
+    ride updateRide(@RequestBody ride rd){
         return rds.updateStatus(rd);
     }
 
-    @DeleteMapping("delete/{rideId}")
-    public String deleteRide(@PathVariable Integer rideId){
-        if(rds.checkRideId(rideId)){
-            return rds.deleteRide(rideId);
-        }
-        return "ID doesn't exsits!!";
-    }
 }
+

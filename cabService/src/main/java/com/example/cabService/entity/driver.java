@@ -15,6 +15,7 @@ public class driver {
     private int exp;
     private boolean currentRideStatus;
 
+
     public void setCurrentRideStatus(boolean currentRideStatus) {
         this.currentRideStatus = currentRideStatus;
     }

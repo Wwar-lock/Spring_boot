@@ -9,8 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface driverService {
+
     driver updateDriver(driver dr);
+
     List<driver> getAllDrivers();
-    driver addDriver(driver dr) throws DriverAlreadyAdded;
+
+    driver addDriver(driver dr);
+
     boolean checkDriverId(int driverId);
 }
